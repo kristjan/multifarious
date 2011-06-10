@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/kristjan/multifarious"
     gem.authors = ["Kristján Pétursson"]
     gem.add_development_dependency "rspec"
-    gem.version = "0.1.1"
+    gem.version = "0.2.0"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
