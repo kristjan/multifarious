@@ -109,6 +109,11 @@ describe Mosaic do
         @mosaic.place!(@tile, 0, 0)
       }.to raise_error(Mosaic::DuplicateTile)
     end
+
+    it "notifies the tile of its placement" do
+      @tile.should_receive(:place!).with(@mosaic, 1, 0)
+      @mosaic.place!(@tile, 1, 0)
+    end
   end
 
   it "knows when it contains a tile" do

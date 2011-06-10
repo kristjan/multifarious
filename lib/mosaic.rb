@@ -81,6 +81,7 @@ class Mosaic
     raise DuplicateTile if has_tile?(tile)
     return false unless can_place?(tile, row, col)
     @tiles << tile
+    tile.place!(self, row, col)
     (row...(row + tile.rows)).each do |r|
       (col...(col + tile.cols)).each do |c|
         @grid[r][c] = tile

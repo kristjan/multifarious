@@ -2,12 +2,25 @@ require "spec_helper"
 
 describe Tile do
   describe "initializing" do
+    before :each do
+      @tile = Tile.new(1,2)
+    end
+
     it "stores the rows" do
-      Tile.new(1,2).rows.should == 1
+      @tile.rows.should == 1
     end
 
     it "stores the columns" do
-      Tile.new(1,2).cols.should == 2
+      @tile.cols.should == 2
+    end
+
+    it "has no mosaic" do
+      @tile.mosaic.should be_nil
+    end
+
+    it "has no location" do
+      @tile.row.should be_nil
+      @tile.col.should be_nil
     end
   end
 
@@ -31,6 +44,26 @@ describe Tile do
 
     it "is not #equal to another tile of the same dimensions" do
       Tile.new(1,1).should_not be_equal(Tile.new(1,1))
+    end
+  end
+
+  describe "placing a tile in a mosaic" do
+    before :each do
+      @mosaic = Mosaic.new(4,4)
+      @tile = Tile::Medium.new
+      @tile.place!(@mosaic, 1, 2)
+    end
+
+    it "links the tile to the mosaic" do
+      @tile.mosaic.should == @mosaic
+    end
+
+    it "remembers the row the tile was placed in" do
+      @tile.row.should == 1
+    end
+
+    it "remembers the column the tile was placed in" do
+      @tile.col.should == 2
     end
   end
 

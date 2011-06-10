@@ -1,4 +1,6 @@
 class Tile
+  attr_reader :mosaic
+  attr_reader :row,  :col
   attr_reader :rows, :cols
 
   class Large < Tile
@@ -53,6 +55,10 @@ class Tile
 
   def area
     @rows * @cols
+  end
+
+  def place!(mosaic, row, col)
+    @mosaic, @row, @col = mosaic, row, col
   end
 
   def shatter
